@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VAM</title>
+	<style>
+	h1.div_text_shadow 
+	{
+	color: rgb(66, 60, 54);
+	font-size: 70px;
+	background-color: rgb(110, 110, 110);
+	text-shadow: rgba(255, 255, 255, 0.2) 3px 2px 3px;
+	}
+	</style>
+ 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css"/>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+    <script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+
+      
+ 
+    <script>
+    
+     // This creates the connection to the database
+        var toDoDB = new Firebase('https://incandescent-torch-8399.firebaseio.com/');
+        
+        // This tells your web browser to respond when
+        // SOMEONE (i.e. maybe not even you) adds to the database
+        toDoDB.on('value', showItems);
+        
+           
+        var nameofsongs=[];
+        var nameofurl=[];
+        var toDoDD;
+        function showItems(snapshot){
+            
+            // Gets my data in my database as a list
+            // Gets my data in my database as a list
+            toDoDD=snapshot.val();
+           
+            console.log(toDoDD["Congratulations"]);
+            
+            // Loops over each identifier in my data base
+            for(var identifier in toDoDD){
+                console.log("ID: " + identifier  );
+                nameofsongs.push(identifier);
+                nameofurl.push(toDoDD[identifier]);
+                console.log(nameofsongs);
+                console.log(nameofurl);
+            }
+            
+            
+            
+        }
+        
+        
+        function fastest(){
+            
+            var thebox = ($("#songchoice3").val());
+            
+            for(var i=0; i< nameofsongs.length;i++){
+                if (thebox==nameofsongs[i]){
+            
+            
+                    
+                    console.log(nameofurl[i]);
+                
+                
+                    $("#fastestpage").attr("src", nameofurl[i]);
+                
+            
+            
+                }
+            }
+        }
+        function slowest(){
+            
+            var thebox = ($("#songchoice1").val());
+            
+            
+            
+            console.log(thebox);
+            
+            for(var i=0; i< nameofsongs.length;i++){
+                if (thebox==nameofsongs[i]){
+            
+            
+                    
+                    console.log(nameofurl[i]);
+                
+                
+                    $("#slowestpage").attr("src", nameofurl[i]);
+                
+            
+            
+                }
+            }
+        }
+        
+        function computermodest(){
+            
+        
+            console.log(thebox);
+            console.log(nameofsongs[0]);
+            var thebox = ($("#songchoice").val());
+            
+            
+            for(var i=0; i< nameofsongs.length;i++){
+                if (thebox==nameofsongs[i]){
+            
+            
+                    
+                    console.log(nameofurl[i]);
+                
+                
+                    $("#computermodestpage").attr("src", nameofurl[i]);
+                
+            
+            
+                }
+            }
+        }
+        function normalest(){
+            
+            
+            var thebox = ($("#songchoice2").val());
+        
+            
+            for(var i=0; i< nameofsongs.length;i++){
+                if (thebox==nameofsongs[i]){
+            
+            
+                    
+                    console.log(nameofurl[i]);
+                
+                
+                    $("#normalestpage").attr("src", nameofurl[i]);
+                
+            
+            
+                }
+            }
+        }
+        
+        
+        
+    /*var y="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/38336698&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+    var x="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/6301400&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+    var musicList=[];
+    musicList.push(x);
+    musicList.push(y);
+    function changesong(){
+        console.log(musicList);
+        $("#fastestpage").attr("src", x);
+        
+    }*/
+    </script>
+    
+    <script type="text/processing" data-processing-target="fastMode">
+    
+        var mode = "circles";
+		
+		void setup(){
+            size(420,570);
+            background(0,0,0);  
+			
+        }
+        
+        void draw(){
+		
+         
+            stroke(0);
+            fill(0,166,214);
+            rect(350,0,100,28);
+            if (mousePressed == true) {
+                if (mouseX > 350){
+                    if(mouseY < 28){
+                    background(0,0,0);
+                    }
+                }
+            }
+      
+            fill(255);
+            textSize=(100);
+            text("Refresh",365,20);
+		
+		fill(237, 17, 17);		
+		rect(5,0,50,28);
+		
+		fill(237, 17, 153);
+		rect(5,30,50,28);	
+		
+		fill(200, 17, 237);
+		rect(5,60,50,28);
+			
+		fill(97, 17, 237);
+		rect(5,90,50,28);
+	
+		fill(17, 123, 237);
+		rect(5,120,50,28);
+			
+		fill(17, 237, 237);
+		rect(5,150,50,28);
+			
+		fill(17, 237, 153);
+		rect(5,180,50,28);
+			
+		fill(233, 237, 17);
+		rect(5,210,50,28);
+		
+		if (mousePressed == true) {
+		
+		//HINT!!!!!!!! YOU CAN'T WRITE EXPRESSIONS LIKE THIS!!!! GOOGLE HOW TO WRITE CONDIDITIONALS!!
+			if ((5 < mouseX && mouseX < 50) && (0 < mouseY && mouseY < 28)){
+				mode = "circles";
+				//println("I PRESSED CIRCLE");	
+			}
+		//HERE TOO!!!!!!!!!!!
+			if ((5 < mouseX && mouseX < 50) && (30 < mouseY && mouseY < 58)){
+				mode = "picasso";
+				//println("I orESSED PCIASSO");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (60 < mouseY  && mouseY < 88)){
+					mode = "strobe lights";
+					//println("I pressed STROBE LIGHTS");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (90 < mouseY && mouseY < 118)){
+					mode = "crazy paint";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (120 < mouseY && mouseY < 148)) {
+				mode = "spaced circles";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (150 < mouseY && mouseY < 178)){
+				mode = "color lines";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (180 < mouseY && mouseY < 208)){
+				mode = "splatter";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (210 < mouseY && mouseY < 238)){
+				mode = "into the void";		
+				
+			}
+					
+					
+	
+			/*if ((5 < mouseX && mouseX < 100) && (240 < mouseY && mouseY < 268)){
+				mode = "into the void";
+				println("I pressed INTO THE VOID");
+			}*/
+			
+			
+		}
+		
+        }
+        
+        function pausecomp(millis) 
+        {
+        var date = new Date();
+        var curDate = null;
+
+        do { curDate = new Date(); } 
+        while(curDate-date < millis);
+        }
+    
+        void mouseDragged() {
+		
+			if (mode == "circles"){
+				drawCircles();
+			}
+			else if (mode == "picasso"){
+				ongoingPicasso();
+			}	
+			else if (mode == "strobe lights"){
+				strobeLights();
+			}
+			else if (mode == "crazy paint"){
+				crazyPaint();
+			}
+			else if (mode == "spaced circles"){
+				spacedCircles();
+			}
+			else if (mode == "color lines"){
+				colorLinesCircles();
+			}
+			else if (mode == "splatter"){
+				splatter();
+			}
+			else if (mode == "into the void"){
+				intoTheVoid();
+			}
+        };
+		
+		void drawCircles(){
+			var red = random(1,255);
+			var green = random(1,255);
+			var blue = random(1,255);
+			var x = random(10,50);
+			var y = random(10,50);
+			//pausecomp(20);
+			var splatterx = random(1,50);
+			var splattery = random(1,50);
+			fill(red,green,blue);
+			ellipse(mouseX + splatterx,mouseY + splattery,x,y);
+		}
+		
+		void ongoingPicasso(){
+		noStroke();
+		
+		fill(mouseX, mouseY, random (0, 255));
+		triangle(mouseX, mouseY, random (0, 400), random (0, 400), random (0, 400), random (0, 400));
+		fill((mouseX - 50), (mouseY - 25), random (0, 255));
+		ellipse (mouseX, mouseY, 50, 50);
+		rect (mouseX, mouseY, 20, 20);
+		}
+		
+		void strobeLights(){
+			noStroke();
+			var c1 = color(255, random(0, 255), random(0,255));
+			fill (c1);
+			ellipse (mouseX, mouseY, 20, 20);
+			beginShape();
+			vertex (200, 200);
+			bezierVertex(180, 100, 180, 175, mouseX, mouseY);
+			bezierVertex(150, 180, 160, 125, mouseX, mouseY);
+			endShape();
+		}
+		
+		void crazyPaint(){
+			frameRate(5);
+			var color1 = random(0,255);
+			var color2 = random(0,255);
+			var color3 = random(0,255);
+			fill(color1, color2, color3);
+			stroke(color1, color2, color3);
+
+			
+			strokeWeight(random(1,5));
+			line(pmouseX, pmouseY, mouseX, mouseY);
+		}
+		
+		
+		var spacedCircles(){
+			noStroke();
+
+			var randColor = function() {
+			var randR =  random(0,255);
+			var randG =  random(0,255);
+			var randB =  random(0,255);
+			fill(randR, randG, randB);
+			}			
+			var randDraw = random(0,10);
+			for (var n = 0; n < randDraw; n++) {
+			randColor();
+			var circ = random(5,20); //random diameter
+			var randX = mouseX + random(-20, 20); //relative to mouseX
+			var randY = mouseY + random(-20, 20); //relative to mouseY
+			ellipse(randX,randY,circ,circ);   
+			}
+		}
+		
+		
+		void colorLinesCircles(){
+			
+			var x = random(5, 30);
+			var y = random(5, 10);
+			var z = random(5, 20);
+			var randX = random(-20,20);
+			var randY = random(-20,20);
+			var randR = random(0, 255);
+			var randG = random(0, 255);
+			var randB = random(0, 255);
+    
+			fill(randR, randG, randB);
+			ellipse(mouseX, mouseY, x, x);
+			ellipse(mouseX + randX, mouseY + randY, y, y);
+			ellipse(mouseX - randX, mouseY - randY, z, z);
+    
+			stroke(randR, randG, randB);
+			strokeWeight(1);
+			line(200,200,mouseX, mouseY);
+			
+		}
+		
+		
+		
+		var splatter(){
+			frameRate(5);
+			var h = random(19,29);
+			var change = random(5,100);
+			var change2 = random(7,18);
+			var change3 = random(7,18)
+			var change4 = random(7,18);
+			var change5 = random(7,18);
+			var change6 = random(7,18);
+			var change7 = random(7,18);
+			var change8 = random(5,100);
+			var change9 = random(5,100);
+			var change10 = random(5,100);
+			var change11 = random(5,100);
+			var change12 = random(5,100);
+			var change13 = random(5,100);
+			var change14 = random(5,100);
+			var r = random(40,255);
+			var g = random(40,255);
+			var b = random(40,255);
+			stroke(r,g,b);
+			fill(r,g,b);
+			ellipse(mouseX,mouseY,h,h);
+			ellipse(mouseX-change,mouseY-change,h-change2,h-change2);
+			ellipse(mouseX+change8,mouseY+change8,h-change3,h-change3);
+			ellipse(mouseX-change9,mouseY+change9,h-change2,h-change2);
+			ellipse(mouseX+change10,mouseY-change10,h-change3,h-change3);
+			ellipse(mouseX+change11,mouseY,h-change4,h-change4);
+			ellipse(mouseX-change12,mouseY,h-change5,h-change5);
+			ellipse(mouseX,mouseY+change13,h-change6,h-change6);
+			ellipse(mouseX,mouseY-change14,h-change7,h-change7);
+				
+		
+		}
+		
+		
+		void intoTheVoid(){
+			beginShape(1);
+			stroke(227, 34, 76);
+			curveVertex(200,  200);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX, mouseY);
+			curveVertex(mouseX, mouseY);
+			endShape(); 
+		}
+    </script>
+    
+    <script type="text/processing" data-processing-target="slowMode">
+        var mode = "circles";
+		
+		void setup(){
+            size(420,570);
+            background(0,0,0);  
+			
+        }
+        
+        void draw(){
+		
+          //println(mode);
+            stroke(0);
+            fill(0,166,214);
+            rect(350,0,100,28);
+            if (mousePressed == true) {
+                if (mouseX > 350){
+                    if(mouseY < 28){
+                    background(0,0,0);
+                    }
+                }
+            }
+      
+            fill(255);
+            textSize=(100);
+            text("Refresh",365,20);
+		
+		fill(237, 17, 17);		
+		rect(5,0,50,28);
+		
+		fill(237, 17, 153);
+		rect(5,30,50,28);	
+		
+		fill(200, 17, 237);
+		rect(5,60,50,28);
+			
+		fill(97, 17, 237);
+		rect(5,90,50,28);
+	
+		fill(17, 123, 237);
+		rect(5,120,50,28);
+			
+		fill(17, 237, 237);
+		rect(5,150,50,28);
+			
+		fill(17, 237, 153);
+		rect(5,180,50,28);
+			
+		fill(233, 237, 17);
+		rect(5,210,50,28);
+		
+		if (mousePressed == true) {
+		
+		//HINT!!!!!!!! YOU CAN'T WRITE EXPRESSIONS LIKE THIS!!!! GOOGLE HOW TO WRITE CONDIDITIONALS!!
+			if ((5 < mouseX && mouseX < 50) && (0 < mouseY && mouseY < 28)){
+				mode = "circles";
+					
+			}
+		//HERE TOO!!!!!!!!!!!
+			if ((5 < mouseX && mouseX < 50) && (30 < mouseY && mouseY < 58)){
+				mode = "picasso";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (60 < mouseY  && mouseY < 88)){
+					mode = "strobe lights";
+					
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (90 < mouseY && mouseY < 118)){
+					mode = "crazy paint";
+					
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (120 < mouseY && mouseY < 148)) {
+				mode = "spaced circles";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (150 < mouseY && mouseY < 178)){
+				mode = "color lines";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (180 < mouseY && mouseY < 208)){
+				mode = "splatter";
+				
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (210 < mouseY && mouseY < 238)){
+				mode = "into the void";		
+				
+			}
+					
+					
+	
+			/*if ((5 < mouseX && mouseX < 100) && (240 < mouseY && mouseY < 268)){
+				mode = "into the void";
+				
+			}*/
+			
+			
+		}
+		
+        }
+        
+        function pausecomp(millis) 
+        {
+        var date = new Date();
+        var curDate = null;
+
+        do { curDate = new Date(); } 
+        while(curDate-date < millis);
+        }
+    
+        void mouseDragged() {
+		
+			if (mode == "circles"){
+				
+				drawCircles();
+			}
+			else if (mode == "picasso"){
+				
+				ongoingPicasso();
+				
+			}	
+			else if (mode == "strobe lights"){
+				strobeLights();
+			}
+			else if (mode == "crazy paint"){
+				crazyPaint();
+			}
+			else if (mode == "spaced circles"){
+				spacedCircles();
+			}
+			else if (mode == "color lines"){
+				colorLinesCircles();
+			}
+			else if (mode == "splatter"){
+				splatter();
+			}
+			else if (mode == "into the void"){
+				intoTheVoid();
+			}
+        };
+		
+		void drawCircles(){
+			var red = random(1,255);
+			var green = random(1,255);
+			var blue = random(1,255);
+			var x = random(10,50);
+			var y = random(10,50);
+			pausecomp(40);
+			var splatterx = random(1,50);
+			var splattery = random(1,50);
+			fill(red,green,blue);
+			ellipse(mouseX + splatterx,mouseY + splattery,x,y);
+		}
+		
+		void ongoingPicasso(){
+		noStroke();
+		//pauseComp(40);
+		fill(mouseX, mouseY, random (0, 255));
+		triangle(mouseX, mouseY, random (0, 400), random (0, 400), random (0, 400), random (0, 400));
+		fill((mouseX - 50), (mouseY - 25), random (0, 255));
+		ellipse (mouseX, mouseY, 50, 50);
+		rect (mouseX, mouseY, 20, 20);
+		}
+		
+		void strobeLights(){
+			noStroke();
+			var c1 = color(255, random(0, 255), random(0,255));
+			//pauseComp(40);
+			fill (c1);
+			ellipse (mouseX, mouseY, 20, 20);
+			beginShape();
+			vertex (200, 200);
+			bezierVertex(180, 100, 180, 175, mouseX, mouseY);
+			bezierVertex(150, 180, 160, 125, mouseX, mouseY);
+			endShape();
+		}
+		
+		void crazyPaint(){
+			frameRate(5);
+			var color1 = random(0,255);
+			var color2 = random(0,255);
+			var color3 = random(0,255);
+			fill(color1, color2, color3);
+			stroke(color1, color2, color3);
+
+			//pauseComp(40);
+			strokeWeight(random(1,5));
+			line(pmouseX, pmouseY, mouseX, mouseY);
+		}
+		
+		
+		var spacedCircles(){
+			noStroke();
+
+			var randColor = function() {
+			var randR =  random(0,255);
+			var randG =  random(0,255);
+			var randB =  random(0,255);
+			fill(randR, randG, randB);
+			}			
+			var randDraw = random(0,10);
+			for (var n = 0; n < randDraw; n++) {
+			randColor();
+			var circ = random(5,20); //random diameter
+			var randX = mouseX + random(-20, 20); //relative to mouseX
+			var randY = mouseY + random(-20, 20); //relative to mouseY
+			//pauseComp(40);
+			ellipse(randX,randY,circ,circ);   
+			}
+		}
+		
+		
+		void colorLinesCircles(){
+			
+			var x = random(5, 30);
+			var y = random(5, 10);
+			var z = random(5, 20);
+			var randX = random(-20,20);
+			var randY = random(-20,20);
+			var randR = random(0, 255);
+			var randG = random(0, 255);
+			var randB = random(0, 255);
+			//pauseComp(40);
+			fill(randR, randG, randB);
+			ellipse(mouseX, mouseY, x, x);
+			ellipse(mouseX + randX, mouseY + randY, y, y);
+			ellipse(mouseX - randX, mouseY - randY, z, z);
+    
+			stroke(randR, randG, randB);
+			strokeWeight(1);
+			line(200,200,mouseX, mouseY);
+			
+		}
+		
+		
+		
+		var splatter(){
+			frameRate(5);
+			var h = random(19,29);
+			var change = random(5,100);
+			var change2 = random(7,18);
+			var change3 = random(7,18)
+			var change4 = random(7,18);
+			var change5 = random(7,18);
+			var change6 = random(7,18);
+			var change7 = random(7,18);
+			var change8 = random(5,100);
+			var change9 = random(5,100);
+			var change10 = random(5,100);
+			var change11 = random(5,100);
+			var change12 = random(5,100);
+			var change13 = random(5,100);
+			var change14 = random(5,100);
+			var r = random(40,255);
+			var g = random(40,255);
+			var b = random(40,255);
+			//pauseComp(40);
+			stroke(r,g,b);
+			fill(r,g,b);
+			ellipse(mouseX,mouseY,h,h);
+			ellipse(mouseX-change,mouseY-change,h-change2,h-change2);
+			ellipse(mouseX+change8,mouseY+change8,h-change3,h-change3);
+			ellipse(mouseX-change9,mouseY+change9,h-change2,h-change2);
+			ellipse(mouseX+change10,mouseY-change10,h-change3,h-change3);
+			ellipse(mouseX+change11,mouseY,h-change4,h-change4);
+			ellipse(mouseX-change12,mouseY,h-change5,h-change5);
+			ellipse(mouseX,mouseY+change13,h-change6,h-change6);
+			ellipse(mouseX,mouseY-change14,h-change7,h-change7);
+				
+		
+		}
+		
+		
+		void intoTheVoid(){
+			beginShape(1);
+			//pauseComp(40);
+			stroke(227, 34, 76);
+			curveVertex(200,  200);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX, mouseY);
+			curveVertex(mouseX, mouseY);
+			endShape(); 
+		}
+        
+    </script>
+    
+    
+        
+    </script>
+    
+    <script type="text/processing" data-processing-target="optionsMode">
+        var mode = "circles";
+		
+		void setup(){
+            size(420,570);
+            background(0,0,0);  
+			
+        }
+        
+        void draw(){
+		
+          //println(mode);
+            stroke(0);
+            fill(0,166,214);
+            rect(350,0,100,28);
+            if (mousePressed == true) {
+                if (mouseX > 350){
+                    if(mouseY < 28){
+                    background(0,0,0);
+                    }
+                }
+            }
+      
+            fill(255);
+            textSize=(100);
+            text("Refresh",365,20);
+		
+		fill(237, 17, 17);		
+		rect(5,0,50,28);
+		
+		fill(237, 17, 153);
+		rect(5,30,50,28);	
+		
+		fill(200, 17, 237);
+		rect(5,60,50,28);
+			
+		fill(97, 17, 237);
+		rect(5,90,50,28);
+	
+		fill(17, 123, 237);
+		rect(5,120,50,28);
+			
+		fill(17, 237, 237);
+		rect(5,150,50,28);
+			
+		fill(17, 237, 153);
+		rect(5,180,50,28);
+			
+		fill(233, 237, 17);
+		rect(5,210,50,28);
+		
+		if (mousePressed == true) {
+		
+		//HINT!!!!!!!! YOU CAN'T WRITE EXPRESSIONS LIKE THIS!!!! GOOGLE HOW TO WRITE CONDIDITIONALS!!
+			if ((5 < mouseX && mouseX < 50) && (0 < mouseY && mouseY < 28)){
+				mode = "circles";
+				//println("I PRESSED CIRCLE");	
+			}
+		//HERE TOO!!!!!!!!!!!
+			if ((5 < mouseX && mouseX < 50) && (30 < mouseY && mouseY < 58)){
+				mode = "picasso";
+				//println("I orESSED PCIASSO");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (60 < mouseY  && mouseY < 88)){
+					mode = "strobe lights";
+					//println("I pressed STROBE LIGHTS");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (90 < mouseY && mouseY < 118)){
+					mode = "crazy paint";
+					//println("I pressed CRAZY PAINT");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (120 < mouseY && mouseY < 148)) {
+				mode = "spaced circles";
+				//println("I pressed SPACED CIRCCLES");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (150 < mouseY && mouseY < 178)){
+				mode = "color lines";
+				//println("I pressed COLOR LINES CIRCLES");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (180 < mouseY && mouseY < 208)){
+				mode = "splatter";
+				//println("I pressed SPLATTER");
+			}
+			
+			if ((5 < mouseX && mouseX < 50) && (210 < mouseY && mouseY < 238)){
+				mode = "into the void";		
+				//println("I pressed INTO THE VOID");
+			}
+					
+					
+	
+			/*if ((5 < mouseX && mouseX < 100) && (240 < mouseY && mouseY < 268)){
+				mode = "into the void";
+				println("I pressed INTO THE VOID");
+			}*/
+			
+			
+		}
+		
+        }
+        
+        function pausecomp(millis) 
+        {
+        var date = new Date();
+        var curDate = null;
+
+        do { curDate = new Date(); } 
+        while(curDate-date < millis);
+        }
+    
+        void mouseDragged() {
+		
+			if (mode == "circles"){
+				drawCircles();
+			}
+			else if (mode == "picasso"){
+				ongoingPicasso();
+			}	
+			else if (mode == "strobe lights"){
+				strobeLights();
+			}
+			else if (mode == "crazy paint"){
+				crazyPaint();
+			}
+			else if (mode == "spaced circles"){
+				spacedCircles();
+			}
+			else if (mode == "color lines"){
+				colorLinesCircles();
+			}
+			else if (mode == "splatter"){
+				splatter();
+			}
+			else if (mode == "into the void"){
+				intoTheVoid();
+			}
+        };
+		
+		void drawCircles(){
+			var red = random(1,255);
+			var green = random(1,255);
+			var blue = random(1,255);
+			var x = random(10,50);
+			var y = random(10,50);
+			//pausecomp(20);
+			var splatterx = random(1,50);
+			var splattery = random(1,50);
+			fill(red,green,blue);
+			ellipse(mouseX + splatterx,mouseY + splattery,x,y);
+		}
+		
+		void ongoingPicasso(){
+		noStroke();
+		
+		fill(mouseX, mouseY, random (0, 255));
+		triangle(mouseX, mouseY, random (0, 400), random (0, 400), random (0, 400), random (0, 400));
+		fill((mouseX - 50), (mouseY - 25), random (0, 255));
+		ellipse (mouseX, mouseY, 50, 50);
+		rect (mouseX, mouseY, 20, 20);
+		}
+		
+		void strobeLights(){
+			noStroke();
+			var c1 = color(255, random(0, 255), random(0,255));
+			fill (c1);
+			ellipse (mouseX, mouseY, 20, 20);
+			beginShape();
+			vertex (200, 200);
+			bezierVertex(180, 100, 180, 175, mouseX, mouseY);
+			bezierVertex(150, 180, 160, 125, mouseX, mouseY);
+			endShape();
+		}
+		
+		void crazyPaint(){
+			frameRate(5);
+			var color1 = random(0,255);
+			var color2 = random(0,255);
+			var color3 = random(0,255);
+			fill(color1, color2, color3);
+			stroke(color1, color2, color3);
+
+			
+			strokeWeight(random(1,5));
+			line(pmouseX, pmouseY, mouseX, mouseY);
+		}
+		
+		
+		var spacedCircles(){
+			noStroke();
+
+			var randColor = function() {
+			var randR =  random(0,255);
+			var randG =  random(0,255);
+			var randB =  random(0,255);
+			fill(randR, randG, randB);
+			}			
+			var randDraw = random(0,10);
+			for (var n = 0; n < randDraw; n++) {
+			randColor();
+			var circ = random(5,20); //random diameter
+			var randX = mouseX + random(-20, 20); //relative to mouseX
+			var randY = mouseY + random(-20, 20); //relative to mouseY
+			ellipse(randX,randY,circ,circ);   
+			}
+		}
+		
+		
+		void colorLinesCircles(){
+			
+			var x = random(5, 30);
+			var y = random(5, 10);
+			var z = random(5, 20);
+			var randX = random(-20,20);
+			var randY = random(-20,20);
+			var randR = random(0, 255);
+			var randG = random(0, 255);
+			var randB = random(0, 255);
+    
+			fill(randR, randG, randB);
+			ellipse(mouseX, mouseY, x, x);
+			ellipse(mouseX + randX, mouseY + randY, y, y);
+			ellipse(mouseX - randX, mouseY - randY, z, z);
+    
+			stroke(randR, randG, randB);
+			strokeWeight(1);
+			line(200,200,mouseX, mouseY);
+			
+		}
+		
+		
+		
+		var splatter(){
+			frameRate(5);
+			var h = random(19,29);
+			var change = random(5,100);
+			var change2 = random(7,18);
+			var change3 = random(7,18)
+			var change4 = random(7,18);
+			var change5 = random(7,18);
+			var change6 = random(7,18);
+			var change7 = random(7,18);
+			var change8 = random(5,100);
+			var change9 = random(5,100);
+			var change10 = random(5,100);
+			var change11 = random(5,100);
+			var change12 = random(5,100);
+			var change13 = random(5,100);
+			var change14 = random(5,100);
+			var r = random(40,255);
+			var g = random(40,255);
+			var b = random(40,255);
+			stroke(r,g,b);
+			fill(r,g,b);
+			ellipse(mouseX,mouseY,h,h);
+			ellipse(mouseX-change,mouseY-change,h-change2,h-change2);
+			ellipse(mouseX+change8,mouseY+change8,h-change3,h-change3);
+			ellipse(mouseX-change9,mouseY+change9,h-change2,h-change2);
+			ellipse(mouseX+change10,mouseY-change10,h-change3,h-change3);
+			ellipse(mouseX+change11,mouseY,h-change4,h-change4);
+			ellipse(mouseX-change12,mouseY,h-change5,h-change5);
+			ellipse(mouseX,mouseY+change13,h-change6,h-change6);
+			ellipse(mouseX,mouseY-change14,h-change7,h-change7);
+				
+		
+		}
+		
+		
+		void intoTheVoid(){
+			beginShape(1);
+			stroke(227, 34, 76);
+			curveVertex(200,  200);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX,  mouseY);
+			curveVertex(mouseX, mouseY);
+			curveVertex(mouseX, mouseY);
+			endShape(); 
+		}
+		
+		
+		
+		
+		
+		
+    </script>
+    
+    
+    <script type="text/processing" data-processing-target="computerMode">
+       void setup(){
+            size(420,570);
+            background(0,0,0);
+            noStroke();
+            /*println("hey");*/
+        }
+        
+        var isStopped = false;
+        
+        void draw () {
+        noStroke();
+        var red = random(1,255);
+        var green = random(1,255);
+        var blue = random(1,255);
+        var x = random(10,50);
+        var y = random(10,50);
+        
+        var splatterx = random(1,50);
+        var splattery = random(1,50);
+        
+    
+        if (isStopped == false) {
+         
+            fill(red,green,blue);
+            ellipse(random(1,420) + splatterx,random(1,570) + splattery,x,y);
+        }   
+                //refresh button
+                fill(0,166,214);
+                rect(350,0,100,28);
+                if (mousePressed == true) {
+                    if (mouseX > 350){
+                        if(mouseY < 28){
+                        background(0,0,0);
+                        }
+                    }
+                }
+          
+                fill(255);
+                textSize=(100);
+                text("Refresh",365,20)
+                
+                // stop button
+                stroke(0);
+                fill(0,166,214);
+                rect(350,30,100,28);
+                if (mousePressed == true) {
+                    if (mouseX > 350){
+                        if(mouseY < 56 && mouseY > 28){
+                            if(isStopped == false){
+                                isStopped = true;
+                            }
+                            else if (isStopped == true){
+                                isStopped = false;
+                            }
+                        }
+                        
+                        
+                    }
+                }
+                fill(255);
+                textSize=(100);
+                text("Stop",365,46);
+            
+        }
+         
+    
+        
+        
+       
+    </script>
+
+    
+    
+    
+  </head>
+  
+  
+  <body>
+	<div data-role="page" id="homepage">
+	
+		<div data-role="header" style = "background-color: 000000;" data-position="fixed">
+				<div class="logo">
+				<center>
+						<a href = "#homePage" width="50%"><img src = "https://lh3.ggpht.com/Ee9i_iBCauxs1fBMZMZBIgasyzNytDWEmtsliRGmDqspMqwnpXT_etXT_GH7Ah0v7VfYSjI=s170" align = "middle" style="width:130px; height:auto;"></a>
+				</center>
+			</div>
+			</div>
+			<div data-role="body" style = "background-color: 99CCFF;">
+				<center>
+				<input type='text' id='nameInput' placeholder='Name'>
+				<input type='text' id='messageInput' placeholder='Password'>
+				<p>
+				<a href = "#master" style = "padding-left: 50px; text-decoration: none;">Begin!</a>
+				</p>
+				</center>
+			</div>
+				<script>
+					var myDataRef = new Firebase('https://incandescent-torch-8399.firebaseio.com/');
+					$('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.push({name: name, text: text});
+          
+        }
+      });
+	  </script>
+	
+	</div>
+	
+  
+  
+  
+  
+   
+    <div data-role="page" id="master">
+        <div data-role="header">
+        
+            <h1 class= "div_text_shadow" >VAM</h1>
+            <h6 style="color:grey">Visually Appealing Music</h6>
+        </div>
+        
+        <center>
+            <p>Choose Pace:</p>
+			<br>
+            <a href="#slowPage"><button class="ui-btn ui-shadow">Slow</button></a>
+			<br>
+            <a href="#normalPage"><button class="ui-btn ui-shadow">Normal</button></a>
+			<br>
+            <a href="#fastPage"><button class="ui-btn ui-shadow">Fast</button></a>
+			<br>
+            <a href="computerPage"><button class="ui-btn ui-shadow">Computer Mode</button></a>
+            
+        </center>
+        
+    
+        
+    </div>
+	
+	
+	
+    
+    
+    
+        <div data-role="page" id="fastPage">
+            <div data-role=header>
+                
+                <a href="#master"><button class="ui-btn ui-shadow" data-position="center">Back</button></a>
+                <center><h4 style="color:white">Fast Mode</h4></center>
+            </div>
+            
+            <center><canvas id="fastMode"></canvas></center>
+            <center>
+                <iframe id ="fastestpage" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/38336698&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+            </center>
+            <center>
+            <select name="select-choice-a" id="songchoice3"
+            data-native-menu="false">
+                <option>Pick your song
+                    <option value="No diggity">No Diggity-Blackstreet</option>
+                    <option value="Dont stop the music"> Dont Stop the Music- Pitbull</option>
+                    <option value="PartyRockAnthem">Party Rock Anthem-LMFAO</option>
+                    <option value="Boom clap"> Boom Clap-Charlie XCX</option>
+                    <option value="Better in time">Better in time-Leona Lewis </option>
+                </option>
+                
+                <input type="button" value="Submit" data-theme="b" onclick="fastest()"/>
+            </select>
+            </center>
+        </form>
+        </div>
+
+            
+        <div data-role="page" id="slowPage">
+            <div data-role=header>
+                <a href="#master"><button class="ui-btn ui-shadow" data-position="left">Back</button></a>
+                <center><h4 style="color:whit">Slow Mode</h4></center>
+            </div>
+            <center><canvas id="slowMode"></canvas></center>
+            
+                <center>
+                    <iframe id="slowestpage" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/6301400&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+                </center>
+            <center>
+            <select name="select-choice-a" id="songchoice1"
+            data-native-menu="false">
+                <option>Pick your song
+                    <option value="100 years">100 years-Five for Fighting</option>
+                    <option value="Congratulations"> Congratulations-MGMT</option>
+                    <option value="Always on my mind">Always on my mind-Elvis Presley</option>
+                    <option value="Youre beautiful "> Youre beautiful-James Blunt</option>
+                    <option value="Better in time">Better in time-Leona Lewis </option>
+                </option>
+                
+                <input type="button" value="Submit" data-theme="b" onclick="slowest()"/>
+            </select>
+            </center>
+            
+        </div>
+    
+        <div data-role="page" id="normalPage">
+            <div data-role=header>
+                <a href="#master"><button class="ui-btn ui-shadow" data-position="left">Back</button></a>
+                <center><h4 style="color:white">Normal Mode</h4></canvas>
+            </div>
+            <center><canvas id ="optionsMode"></canvas></center>
+            
+            <center>
+                <iframe id="normalestpage" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/10032807&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+            </center>
+            <center>
+            <select name="select-choice-a" id="songchoice2"
+            data-native-menu="false">
+                <option>Pick your song
+                    <option value="Hips dont lie">Hips Dont Lie-Shakira</option>
+                    <option value="Iris"> Iris-Sleeping with Sirens</option>
+                    <option value="Our song">Our song-Matchbox 20</option>
+                    
+                </option>
+                
+                <input type="button" value="Submit" data-theme="b" onclick="normalest()"/>
+            </select>
+            </center>
+        
+        </div>
+        
+        <div data-role="page" id="computerPage">
+             <div data-role=header>
+                <a href="#master"><button class="ui-btn ui-shadow" data-position="left">Back</button></a>
+                <center><h4 style="color:whit">Slow Mode</h4></center>
+            </div>
+            <center><canvas id="computerMode"></canvas></center>
+            
+                <center>
+                    <iframe id="computermodestpage" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/6301400&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+                </center>
+            <center>
+            <select name="select-choice-a" id="songchoice"
+            data-native-menu="false">
+                <option>Pick your song
+                    <option value="Boom clap">Boom Clap-Charlie XCX</option>
+                    <option value="No Diggity">No Diggity-Blackstreet</option>
+                    <option value="Iris"> Iris-Sleeping with Sirens</option>
+                    <option value="100 years">100 years-Five for Fighting</option>
+                    
+                    
+                    <option value="PartyRockAnthem">Party Rock Anthem-LMFAO </option>
+                </option>
+                
+                <input type="button" value="Submit" data-theme="b" onclick="computermodest()"/>
+            </select>
+            </center>
+            
+            
+        </div>  
+
+        
+        
+    
+    
+  </body>
+</html>
